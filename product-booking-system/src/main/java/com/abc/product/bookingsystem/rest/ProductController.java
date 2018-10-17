@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.abc.product.bookingsystem.model.Product;
 import com.abc.product.bookingsystem.service.ProductService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("product")
 public class ProductController {
@@ -27,6 +29,7 @@ public class ProductController {
 	 *            the Product object.
 	 * @return the saved Product object.
 	 */
+	@ApiOperation(value = "Create Product", notes = "This API would create Product information.", response = Product.class)
 	@PostMapping("/create")
 	public Product create(@RequestBody Product product) {
 		return productService.saveOrUpdate(product);
@@ -41,6 +44,7 @@ public class ProductController {
 	 *            the Product id.
 	 * @return the updated Product object.
 	 */
+	@ApiOperation(value = "Update Product", notes = "This API would update Product information.", response = Product.class)
 	@PostMapping("/update/{id}")
 	public Product create(@RequestBody Product product, @PathVariable("id") int id) {
 		if (id <= 0) {
@@ -56,6 +60,7 @@ public class ProductController {
 	 * @param id
 	 *            the Product id.
 	 */
+	@ApiOperation(value = "Delete Product", notes = "This API would delete Product information.", response = Void.class)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") int id) {
 		if (id == 0) {
@@ -69,6 +74,7 @@ public class ProductController {
 	 * 
 	 * @return the list of Product objects
 	 */
+	@ApiOperation(value = "Fetch All Product Details", notes = "This API would fetch all Product information.", response = Product.class)
 	@GetMapping("/all")
 	public List<Product> getProducts() {
 		return productService.getProducts();
@@ -81,6 +87,7 @@ public class ProductController {
 	 *            the product id.
 	 * @return the matched product object.
 	 */
+	@ApiOperation(value = "Fetch Product Details", notes = "This API would fetch Product information by id.", response = Product.class)
 	@GetMapping("/{id}")
 	public Product getById(@PathVariable("id") int id) {
 		return productService.getById(id);

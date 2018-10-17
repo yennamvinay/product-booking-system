@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.abc.product.bookingsystem.model.Seller;
 import com.abc.product.bookingsystem.service.SellerService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping("seller")
 public class SellerController {
@@ -27,6 +31,8 @@ public class SellerController {
 	 *            the seller object.
 	 * @return the saved seller object.
 	 */
+	@ApiOperation(value = "Create Seller", notes = "This API would create Seller information.", response = Seller.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "") })
 	@PostMapping("/create")
 	public Seller create(@RequestBody Seller seller) {
 		return sellerService.saveOrUpdate(seller);
@@ -41,6 +47,7 @@ public class SellerController {
 	 *            the seller id.
 	 * @return the updated seller object.
 	 */
+	@ApiOperation(value = "Update Seller", notes = "This API would update Seller information.", response = Seller.class)
 	@PostMapping("/update/{id}")
 	public Seller create(@RequestBody Seller seller, @PathVariable("id") int id) {
 		if (id <= 0) {
@@ -56,6 +63,7 @@ public class SellerController {
 	 * @param id
 	 *            the seller id.
 	 */
+	@ApiOperation(value = "Delete Seller", notes = "This API would delete Seller information.", response = Void.class)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") int id) {
 		if (id == 0) {
@@ -69,6 +77,7 @@ public class SellerController {
 	 * 
 	 * @return the list of seller objects
 	 */
+	@ApiOperation(value = "Fetch All Seller Details", notes = "This API would fetch all Sellers information.", response = Seller.class)
 	@GetMapping("/all")
 	public List<Seller> getSellers() {
 		return sellerService.getSellers();
@@ -81,6 +90,7 @@ public class SellerController {
 	 *            the seller id
 	 * @return matched Seller object
 	 */
+	@ApiOperation(value = "Fetch Seller Details", notes = "This API would fetch Seller information by id.", response = Seller.class)
 	@GetMapping("/{id}")
 	public Seller getById(@PathVariable("id") int id) {
 		return sellerService.getById(id);

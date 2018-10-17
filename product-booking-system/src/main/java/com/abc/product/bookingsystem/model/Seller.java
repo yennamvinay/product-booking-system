@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Entity
@@ -20,7 +21,9 @@ public class Seller implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@ApiModelProperty(notes = "Name of the Seller", name = "name", required = true)
 	private String name;
 
+	@ApiModelProperty(notes = "Address of the Seller", name = "address", required = true)
 	private String address;
 }

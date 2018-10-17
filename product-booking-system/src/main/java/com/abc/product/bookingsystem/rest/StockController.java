@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.abc.product.bookingsystem.model.Booking;
 import com.abc.product.bookingsystem.model.Stock;
 import com.abc.product.bookingsystem.service.StockService;
+
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("stock")
@@ -24,6 +27,7 @@ public class StockController {
 	 * 
 	 * @return the list of stock objects.
 	 */
+	@ApiOperation(value = "Get Stocks", notes = "This API would fetch the stocks information for all the prodcuts.", response = Stock.class)
 	@GetMapping("/all")
 	public List<Stock> getStocks() {
 		return stockService.getStocks();
@@ -36,6 +40,7 @@ public class StockController {
 	 *            the product id.
 	 * @return the stock object.
 	 */
+	@ApiOperation(value = "Get Stock", notes = "This API would fetch the stock information by product id.", response = Stock.class)
 	@GetMapping("/{id}")
 	public Stock getProductStock(@PathVariable("id") int id) {
 		return stockService.getStockByProductId(id);
@@ -48,6 +53,7 @@ public class StockController {
 	 *            the stock object
 	 * @return the added stock object.
 	 */
+	@ApiOperation(value = "Add Stock", notes = "This API would add stock for the products.", response = Stock.class)
 	@PostMapping("/add")
 	public Stock addStock(@RequestBody Stock stock) {
 		return stockService.addStock(stock);
