@@ -10,3 +10,6 @@ Below are the steps to follow:
     d. Book an order for the product.</br>
     e. Do payment for the orders recieved.
     
+After adding seller information, product information and stock information a booking can be done for a product of some stock by a seller. While booking an order, we have a parameter as booking type where 1 indicates book only if stock is available for the product and 2 indicates book even if stock is not available for the product and deliver it once available.
+
+After booking is done and is delivered, payment is done for each booking.
