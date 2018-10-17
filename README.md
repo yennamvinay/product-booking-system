@@ -65,3 +65,6 @@ Response Body:
         "address": "Address 4"
     }
 ]
+
+Manage Products:
+
