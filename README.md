@@ -9,6 +9,9 @@ Below are the steps to follow:
     c. Add Stock Information</br>
     d. Book an order for the product.</br>
     e. Do payment for the orders recieved.
+    f. Get products to be repenished
+    g. Get no of products booked by a seller in a year
+    f. Send notifications to company manager after doing payments, pending payments and products to be repenished.
     
 After adding seller information, product information and stock information a booking can be done for a product of some stock by a seller. While booking an order, we have a parameter as booking type where 1 indicates book only if stock is available for the product and 2 indicates book even if stock is not available for the product and deliver it once available.
 
