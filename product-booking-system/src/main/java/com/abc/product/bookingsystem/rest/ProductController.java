@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abc.product.bookingsystem.model.Product;
+import com.abc.product.bookingsystem.model.ReplenishedProduct;
 import com.abc.product.bookingsystem.service.ProductService;
 
 import io.swagger.annotations.ApiOperation;
@@ -91,5 +92,10 @@ public class ProductController {
 	@GetMapping("/{id}")
 	public Product getById(@PathVariable("id") int id) {
 		return productService.getById(id);
+	}
+	
+	@GetMapping("/replenished")
+	public List<ReplenishedProduct> getReplenishedProducts(){
+		return productService.getReplenishedProducts();
 	}
 }

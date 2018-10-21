@@ -28,7 +28,7 @@ public class BookingScheduler {
 	@Autowired
 	private StockRepository stockRepository;
 
-	@Scheduled(cron = "0 0 0 1/1 * ?")
+	@Scheduled(cron = "0 24 14 ? * ?")
 	public void schedule() {
 		List<Booking> bookOnlyAvailableList = bookingRepository.getByType(1);
 		processBookings(bookOnlyAvailableList);

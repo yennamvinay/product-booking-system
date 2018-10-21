@@ -23,9 +23,9 @@ public class PaymentService {
 	@Autowired
 	private PendingPaymentRepository pendingPaymentRepository;
 
-	public Payment processPayment(Payment paymnet) {
-		paymnet.setPaymentDate(new Timestamp(new Date().getTime()));
-		Payment dbPayment = paymentRepository.save(paymnet);
+	public Payment processPayment(Payment payment) {
+		payment.setPaymentDate(new Timestamp(new Date().getTime()));
+		Payment dbPayment = paymentRepository.save(payment);
 		if (dbPayment != null) {
 			try {
 				ProcessedBooking booking = processedBookingRepository.findById(dbPayment.getBooking().getId())
@@ -37,7 +37,7 @@ public class PaymentService {
 			} catch (Exception exp) {
 				paymentRepository.deleteById(dbPayment.getId());
 			}
-			pendingPaymentRepository.deleteByBookingId(paymnet.getBooking().getId());
+			pendingPaymentRepository.deleteByBookingId(payment.getBooking().getId());
 		}
 		return dbPayment;
 	}

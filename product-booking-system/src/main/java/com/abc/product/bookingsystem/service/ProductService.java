@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.abc.product.bookingsystem.model.Product;
+import com.abc.product.bookingsystem.model.ReplenishedProduct;
 import com.abc.product.bookingsystem.repository.ProductRepository;
 
 @Service
@@ -30,5 +31,9 @@ public class ProductService {
 
 	public Product getById(int id) {
 		return productRepository.findById(id).get();
+	}
+
+	public List<ReplenishedProduct> getReplenishedProducts() {
+		return productRepository.getReplinishedProductStats();
 	}
 }

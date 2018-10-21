@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Entity
@@ -23,9 +24,11 @@ public class Stock implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@ApiModelProperty(notes = "Products Details", name = "product", required = true)
 	@JoinColumn(name = "product_id", unique = true)
 	@OneToOne(cascade = CascadeType.ALL)
 	private Product product;
 
+	@ApiModelProperty(notes = "Count of the products that is available", name = "count", required = true)
 	private int count;
 }
