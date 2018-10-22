@@ -44,4 +44,8 @@ public class StockService {
 		}
 		return stockRepository.save(dbStock);
 	}
+
+	public void updateStock(Stock stock) {
+		stockRepository.save(stock);
+	}
 }

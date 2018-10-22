@@ -93,9 +93,14 @@ public class ProductController {
 	public Product getById(@PathVariable("id") int id) {
 		return productService.getById(id);
 	}
-	
+
+	/**
+	 * Will get list of product details to be replenished.
+	 * 
+	 * @return the list of ReplenishedProduct details.
+	 */
 	@GetMapping("/replenished")
-	public List<ReplenishedProduct> getReplenishedProducts(){
+	public List<ReplenishedProduct> getReplenishedProducts() {
 		return productService.getReplenishedProducts();
 	}
 }

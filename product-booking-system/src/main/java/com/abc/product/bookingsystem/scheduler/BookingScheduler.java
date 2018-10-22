@@ -28,7 +28,7 @@ public class BookingScheduler {
 	@Autowired
 	private StockRepository stockRepository;
 
-	@Scheduled(cron = "0 24 14 ? * ?")
+	@Scheduled(cron = "0 0 0 ? * ?")
 	public void schedule() {
 		List<Booking> bookOnlyAvailableList = bookingRepository.getByType(1);
 		processBookings(bookOnlyAvailableList);
@@ -59,12 +59,14 @@ public class BookingScheduler {
 				processedBookingRepository.deleteById(processed.getId());
 				return;
 			}
-			try {
-				stock.setCount(stock.getCount() - booking.getCount());
-				stockRepository.save(stock);
-			} catch (Exception exp) {
-				processedBookingRepository.deleteById(processed.getId());
-				bookingRepository.deleteById(processed.getId());
+			if (booking.getType() == 2) {
+				try {
+					stock.setCount(stock.getCount() - booking.getCount());
+					stockRepository.save(stock);
+				} catch (Exception exp) {
+					processedBookingRepository.deleteById(processed.getId());
+					bookingRepository.deleteById(processed.getId());
+				}
 			}
 		}
 	}
