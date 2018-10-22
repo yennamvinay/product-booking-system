@@ -51,7 +51,7 @@ public class ProductBookingSystemJpaConfig {
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPort(587);
 		mailSender.setUsername("yennamvinay@gmail.com");
-		mailSender.setPassword("pnb40833");
+		mailSender.setPassword("sample");
 
 		Properties props = mailSender.getJavaMailProperties();
 		props.put("mail.transport.protocol", "smtp");
